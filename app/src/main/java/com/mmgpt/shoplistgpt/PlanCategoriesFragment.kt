@@ -127,18 +127,9 @@ class PlanCategoriesFragment : Fragment() {
     }
 
     private fun showEditDialog(index: Int, current: String) {
-        val input = android.widget.EditText(requireContext()).apply { setText(current) }
-        AlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.edit))
-            .setView(input)
-            .setPositiveButton(android.R.string.ok) { _, _ ->
-                val text = input.text.toString().trim()
-                if (text.isNotEmpty()) {
-                    viewModel.editCategory(index, text)
-                }
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
+        showEditTextDialog(current) { text ->
+            viewModel.editCategory(index, text)
+        }
     }
 
     override fun onDestroyView() {
@@ -146,4 +137,3 @@ class PlanCategoriesFragment : Fragment() {
         _binding = null
     }
 }
-
