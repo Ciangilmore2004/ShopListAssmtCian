@@ -21,4 +21,23 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.mmgpt.shoplistgpt", appContext.packageName)
     }
+
+    @Test
+    fun categoryRecyclerViewPerformsClickAndNotifiesListener() {
+        val instrumentation = InstrumentationRegistry.getInstrumentation()
+        val context = instrumentation.targetContext
+        var clickPerformed = false
+        var clickListenerCalled = false
+
+        instrumentation.runOnMainSync {
+            val recyclerView = ClickableRecyclerView(context)
+            recyclerView.setOnClickListener {
+                clickListenerCalled = true
+            }
+            clickPerformed = recyclerView.performClick()
+        }
+
+        assertTrue(clickPerformed)
+        assertTrue(clickListenerCalled)
+    }
 }
