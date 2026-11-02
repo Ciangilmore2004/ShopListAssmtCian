@@ -1,5 +1,6 @@
 package com.mmgpt.shoplistgpt
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.GestureDetector
 import android.view.LayoutInflater
@@ -33,6 +34,7 @@ class PlanCategoriesFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())

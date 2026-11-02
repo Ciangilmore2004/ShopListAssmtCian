@@ -1,5 +1,6 @@
 package com.mmgpt.shoplistgpt
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -65,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.saveState()
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
