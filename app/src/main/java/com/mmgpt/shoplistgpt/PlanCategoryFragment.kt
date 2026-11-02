@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -104,18 +103,9 @@ class PlanCategoryFragment : Fragment() {
     }
 
     private fun showEditDialog(item: ShoppingItem) {
-        val input = android.widget.EditText(requireContext()).apply { setText(item.name) }
-        AlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.edit))
-            .setView(input)
-            .setPositiveButton(android.R.string.ok) { _, _ ->
-                val text = input.text.toString().trim()
-                if (text.isNotEmpty()) {
-                    viewModel.editItem(item, text)
-                }
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
+        showEditTextDialog(item.name) { text ->
+            viewModel.editItem(item, text)
+        }
     }
 
     override fun onDestroyView() {
