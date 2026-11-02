@@ -51,7 +51,7 @@
             android:text="@string/clear_all"
             android:visibility="gone" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.mmgpt.shoplistgpt.ClickableRecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
