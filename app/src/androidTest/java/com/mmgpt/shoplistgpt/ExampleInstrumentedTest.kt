@@ -1,9 +1,7 @@
 package com.mmgpt.shoplistgpt
 
-import android.view.LayoutInflater
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.mmgpt.shoplistgpt.databinding.FragmentCategoryBinding
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -32,11 +30,11 @@ class ExampleInstrumentedTest {
         var clickListenerCalled = false
 
         instrumentation.runOnMainSync {
-            val binding = FragmentCategoryBinding.inflate(LayoutInflater.from(context))
-            binding.recyclerView.setOnClickListener {
+            val recyclerView = ClickableRecyclerView(context)
+            recyclerView.setOnClickListener {
                 clickListenerCalled = true
             }
-            clickPerformed = binding.recyclerView.performClick()
+            clickPerformed = recyclerView.performClick()
         }
 
         assertTrue(clickPerformed)
